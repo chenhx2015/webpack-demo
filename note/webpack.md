@@ -51,3 +51,10 @@ new webpack.HotModuleReplacementPlugin()
 由于要遵循逻辑分离，我们通常建议为每个环境编写彼此独立的 webpack 配置
 npm install --save-dev webpack-merge
 
+### 代码分离
+三种方法：入口起点，防止重复，动态导入
+方法一：可能会有重复引入的模块 --> 使用CommonChunkPlugin 来移除重复的模块
+方法二：CommonsChunkPlugin 插件可以将公共的依赖模块提取到已有的入口 chunk 中，或者提取到一个新生成的 chunk
+方法三：当涉及到动态代码拆分时，webpack 提供了两个类似的技术
+1.使用符合 ECMAScript 提案 的 import() 语法 --- 优先选择这个
+2.则是使用 webpack 特定的 require.ensure
