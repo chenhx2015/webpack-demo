@@ -5,6 +5,11 @@ import printMe from './print';
 import './style.css';
 // import Icon from './ali.jpg'; // file-loader 会处理
 
+// 任何位置都能访问到这个值
+if(process.env.NODE_ENV !== 'production') {
+    console.log('Looks like we are in development mode!')
+}
+
 function component() {
     var element = document.createElement('div');
     var btn = document.createElement('button');

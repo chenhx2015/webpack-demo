@@ -50,4 +50,11 @@ new webpack.HotModuleReplacementPlugin()
 ### 生产环境构建
 由于要遵循逻辑分离，我们通常建议为每个环境编写彼此独立的 webpack 配置
 npm install --save-dev webpack-merge
+用这个工具可以使这三个配置合在一起，不必在特定环境的配置中重复代码
+
+有原来的总的一个 webpack.config.js 文件分成了三个文件: webpack.common.js , webpack.dev.js , webpack.prod.js  
+注意：1.对应的启动脚本命令也需要修改 start 和 build 命令需要修改
+     2.在install uglifyjs-webpack-plugin 为最新版本2.2.0时打包会报错，换成1.3.0版本就不会报错了（也许是没有支持es6, @todo 待调研）
+指定环境：
+
 
