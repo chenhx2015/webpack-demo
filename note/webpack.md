@@ -58,3 +58,6 @@ npm install --save-dev webpack-merge
 方法三：当涉及到动态代码拆分时，webpack 提供了两个类似的技术
 1.使用符合 ECMAScript 提案 的 import() 语法 --- 优先选择这个
 2.则是使用 webpack 特定的 require.ensure
+
+### 懒加载
+需要时才动态 import 进来

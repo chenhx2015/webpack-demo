@@ -1,18 +1,22 @@
-// import _ from 'lodash'; // 换成动态导入的方式
-import { cube } from './math';
-import printMe from './print';
-
+import _ from 'lodash';
 import './style.css';
 
-function getComponent() {
-    // 在注释中使用了 webpackChunkName。这样做会导致我们的 bundle 被命名为 lodash.bundle.js ，而不是 [id].bundle.js
-    return import(/* webpackChunkName: "lodash" */ 'lodash').then(_ => {
-        var element = document.createElement('div');
-        element.innerHTML = _.join(['Hello', 'webpack'], ' ');
-        return element;
-    }).catch(error => 'An error occurred while loading the component');
-}
+function component() {
+    var element = document.createElement('div');
+    var button = document.createElement('button');
+    var br = document.createElement('br');
 
-getComponent().then(component => {
-    document.body.appendChild(component);
-})
+    element.innerHTML = _.join(['Hello', 'webpack'], ' ');
+    button.innerHTML = 'Click me and look at the console!';
+
+    element.appendChild(br);
+    element.appendChild(button);
+    
+    // 懒加载 --> 需要的时候再动态导入进来
+    button.onclick = e => import(/* webpackChunkName: "print" */ './print').then(module => {
+        var print = module.default;
+        print();
+    })
+    return element;
+};
+document.body.appendChild(component());
