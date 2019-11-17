@@ -51,3 +51,5 @@ new webpack.HotModuleReplacementPlugin()
 由于要遵循逻辑分离，我们通常建议为每个环境编写彼此独立的 webpack 配置
 npm install --save-dev webpack-merge
 
+### shimming
+我们一般不推荐使用全局的东西，然而，一些第三方的库(library)可能会引用一些全局依赖（例如 jQuery 中的 $）。这些库也可能创建一些需要被导出的全局变量。这些“不符合规范的模块”就是 shimming 发挥作用的地方

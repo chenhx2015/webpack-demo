@@ -1,7 +1,4 @@
 const path = require('path');
-const HtmlWebpacklugin = require('html-webpack-plugin');
-// 通常，在每次构建前清理 /dist 文件夹，是比较推荐的做法，因此只会生成用到的文件。让我们完成这个需求: clean-webpack-plugin
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const webpack = require('webpack');
 
 // webpack 最出色的功能之一就是：除了 javascript,还可以通过 loader 引入任何其他类型的文件
@@ -10,7 +7,6 @@ module.exports = {
     // entry: './src/index.js',
     entry: {
         app: './src/index.js'
-        // print: './src/print.js'
     },
     devtool: 'inline-source-map', // 不要用于生产环境，将编译后的代码映射回原始源代码，为了更容易地追踪错误和警告
     // 告知 webpack-dev-server，在 localhost:8080 下建立服务，将 dist 目录下的文件，作为可访问文件,再添加start脚本直接运行开发服务器
@@ -58,12 +54,10 @@ module.exports = {
         ]
     },
     plugins: [
-        new CleanWebpackPlugin(),
-        new HtmlWebpacklugin({
-            title: 'Output Management'
+        new webpack.ProvidePlugin({
+            // _: 'lodash'
+            join: ['lodash', 'join']
         }),
-        new webpack.NamedModulesPlugin(),
-        new webpack.HotModuleReplacementPlugin()
     ],
     output: {
         // filename: 'bundle.js',
