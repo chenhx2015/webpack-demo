@@ -1,6 +1,6 @@
-// import _ from 'lodash'; // 先用不到了
+import _ from 'lodash';
 import { cube } from './math';
-import printMe from './print';
+// import printMe from './print';
 
 import './style.css';
 // import Icon from './ali.jpg'; // file-loader 会处理
@@ -9,11 +9,8 @@ function component() {
     var element = document.createElement('div');
     var btn = document.createElement('button');
     // todo 了解 Lodash 
-    // element.innerHTML = _.join(['Hello', 'Webpack'], ' '); // 先用不到了
-    element.innerHTML = [
-        'Hello webpack!',
-        '5 cubed is equal to ' + cube(5)
-    ].join('\n\n');
+    element.innerHTML = _.join(['Hello', 'Webpack'], ' '); // 先用不到了
+    // element.onclick = printMe.bind(null, 'Hello webpack');
 
     // element.classList.add('hello');
 
@@ -22,8 +19,8 @@ function component() {
     // myIcon.src = Icon;
     // element.appendChild(myIcon);
 
-    btn.innerHTML = 'Click me and check the console!';
-    btn.onclick = printMe;
+    btn.innerHTML = 'Click me and check the console!hh';
+    // btn.onclick = printMe;
     element.appendChild(btn);
 
     return element;
